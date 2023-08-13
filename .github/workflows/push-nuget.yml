@@ -2,10 +2,8 @@ name: push-nuget
 
 on:
   push:
-    branches: [ main ]
-  #push:
-  #  tags:
-  #    - 'v*' 
+    tags:
+      - 'v*'
 
 jobs:
   push:
@@ -25,14 +23,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
     - name: Pack with dotnet botsay
-      run: dotnet pack dotinstall.botsay.csproj --output nuget-packages --configuration Release -p:PackageVersion=1.0.0
-    - name: Debug
-      run: dir
-    - name: Debug
-      run: dir nuget-packages
+      run: dotnet pack dotinstall.botsay.csproj --output nuget-packages --configuration Release -p:PackageVersion=${{ steps.get_version.outputs.version-without-v  }}
     - name: Push with dotnet botsay
-      shell: pwsh
-      env:
-         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      run: dotnet nuget push nuget-packages\dotinstall.botsay.1.0.0.nupkg -k "$env:NUGET_API_KEY" -s https://api.nuget.org/v3/index.json --skip-duplicate
-
+      run: dotnet nuget push nuget-packages/dotinstall.botsay.${{ steps.get_version.outputs.version-without-v  }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
