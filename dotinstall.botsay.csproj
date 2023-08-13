@@ -22,6 +22,14 @@
 		<Authors>khdevnet</Authors>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Readme.md" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Readme.md">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
 		<None Include="..\Readme.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
