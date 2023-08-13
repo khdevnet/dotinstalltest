@@ -31,6 +31,7 @@ jobs:
     - name: Debug
       run: dir nuget-packages
     - name: Push with dotnet botsay
+      shell: pwsh
       env:
          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       run: dotnet nuget push nuget-packages\dotinstall.botsay.1.0.0.nupkg -k "$env:NUGET_API_KEY" -s https://api.nuget.org/v3/index.json --skip-duplicate
