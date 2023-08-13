@@ -31,5 +31,5 @@ jobs:
     - name: Debug
       run: dir nuget-packages
     - name: Push with dotnet botsay
-      run: dotnet nuget push nuget-packages/dotinstall.botsay.1.0.0.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push nuget-packages/dotinstall.botsay.1.0.0.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
 
