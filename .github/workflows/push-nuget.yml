@@ -31,7 +31,7 @@ jobs:
     - name: Debug
       run: dir nuget-packages
     - name: Push with dotnet botsay
-      run: dotnet nuget push nuget-packages\dotinstall.botsay.1.0.0.nupkg -k "$NUGET_TOKEN" -s https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push nuget-packages\dotinstall.botsay.1.0.0.nupkg -k $NUGET_TOKEN -s "https://api.nuget.org/v3/index.json" --skip-duplicate
       env:
        NUGET_TOKEN: ${{ secrets.NUGET_API_KEY }}
 
