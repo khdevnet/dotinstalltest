@@ -15,8 +15,6 @@ jobs:
     - run: |
         echo "NuGetVersionV2: ${{ steps.get_version.outputs.version-without-v }}"
     - name: Setup .NET
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
@@ -26,6 +24,8 @@ jobs:
       run: dotnet build --no-restore --configuration Release
     - name: Pack with dotnet botsay
       run: dotnet pack dotinstall.botsay.csproj --output nuget-packages --configuration Release -p:PackageVersion=${{ steps.get_version.outputs.version-without-v  }}
-    - name: Push with dotnet McVerifier
+    - name: Push with dotnet botsay
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: dotnet nuget push nuget-packages/dotinstall.botsay.${{ steps.get_version.outputs.version-without-v  }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
