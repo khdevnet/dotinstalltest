@@ -21,4 +21,12 @@
 		<Company>khdevnet</Company>
 		<Authors>khdevnet</Authors>
 	</PropertyGroup>
+	<ItemGroup>
+		<ItemGroup>
+			<None Include="..\README.md">
+				<Pack>True</Pack>
+				<PackagePath>\</PackagePath>
+			</None>
+		</ItemGroup>
+	</ItemGroup>
 </Project>
