@@ -15,6 +15,8 @@ jobs:
     - run: |
         echo "NuGetVersionV2: ${{ steps.get_version.outputs.version-without-v }}"
     - name: Setup .NET
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
