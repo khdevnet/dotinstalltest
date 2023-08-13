@@ -2,8 +2,10 @@ name: push-nuget
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [ main ]
+  #push:
+  #  tags:
+  #    - 'v*'
 
 jobs:
   push:
